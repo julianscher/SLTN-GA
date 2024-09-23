@@ -1,0 +1,32 @@
+# Architecture
+arch: FC
+
+# ===== Dataset ===== #
+data: /mnt
+set: MOONS
+name: fc_u_unsigned
+
+# ===== Learning Rate Policy ======== #
+optimizer: sgd
+lr: 0.1
+lr_policy: cosine_lr
+
+# ===== Network training config ===== #
+epochs: 100
+weight_decay: 0.0001
+momentum: 0.9
+batch_size: 128
+
+# ===== Sparsity =========== #
+conv_type: SubnetConv
+bn_type: NonAffineBatchNorm
+freeze_weights: True
+prune_rate: -1
+init: uniform
+# scale_fan: True
+bias: "True"
+fc_architecture: "2_100_2"
+
+# ===== Hardware setup ===== #
+workers: 4
+ 
