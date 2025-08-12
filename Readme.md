@@ -3,7 +3,7 @@
 ---
 by Philipp Altmann, Julian Schönberger, Maximilian Zorn, and Thomas Gabor
 
-arxiv link: Will follow
+arXiv link: https://arxiv.org/pdf/2411.04658
 
 This code contains the functionalities for the genetic algorithm and the basis for repeating 
 the experiments from our paper "Finding Strong Lottery Ticket Networks with Genetic Algorithms".
