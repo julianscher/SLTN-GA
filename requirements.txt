@@ -27,3 +27,6 @@ threadpoolctl==3.2.0
 torch==2.1.2
 typing_extensions==4.9.0
 tzdata==2023.4
+xxhash==3.4.1
+accelerate==1.4.0
+torchvision==0.16.0

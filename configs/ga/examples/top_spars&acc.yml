@@ -1,0 +1,60 @@
+# ===== General ===== #
+seed: 69
+only_model: False
+dataset: MOONS
+normalized: False
+dataset_args: {}
+name: top_spars&acc
+log: True
+log_every: 1
+device: cpu
+
+# ===== Genetic algorithm methods ===== #
+generation_method: strict_connectivity_generation
+recombination_method: random_point_crossover_recombination
+mutation_method: single_point_mutation
+survivor_evaluation_method: population_ranking_evaluation
+parents_evaluation_method: population_performance_evaluation
+individual_evaluation_method: individual_performance_evaluation
+evaluation_cache_type: fitness_hash_table
+survivor_selection_method: graceful_cutoff_selection
+
+# ===== Method parameterization  ===== #
+generation_args: {"nn_architecture": True}
+recombination_args:  {"connectivity_scheme": "lax", nn_architecture: True}
+mutation_args:  {"connectivity_scheme": "strict", nn_architecture: True}
+survivor_evaluation_args: {"performance_maximizing": True, "sparsity_maximizing": True}
+parents_evaluation_args: {"performance_maximizing": True}
+individual_evaluation_args: {"quality_metric": "Accuracy", "model": True, "train_loader": True, "device": True}
+evaluation_cache_args: {}
+survivor_selection_args: {"age_grace_period": 5}
+termination_condition_args: {"population_age": 100}
+
+# ===== Genetic algorithm hyperparameters ===== #
+pop_size: 100
+mig_rate: 0.1
+mut_rate: 0.1
+rec_rate: 0.3
+par_rate: 0.3
+
+# ===== Neural network ===== #
+architecture: [2, 100, 2]
+model: MLP
+activation: relu
+prune_rate: 0.5
+init: uniform
+pretrained: None
+criterion: CE
+mask_except:
+  - net.0.bias
+  - net.2.bias
+
+# ===== Observer routines ===== #
+init_routines: [ir1, ir3, ir4, ir5, ir6, ir7, ir8, ir9, ir12, ir15, ir16]
+evol_routines: [er1, er2, er5, er6, er7, er8, er9, er10, er14]
+final_routines: [fr2, fr3, fr6, fr7, fr8, fr10, fr11, fr13, fr15, fr16]
+termination_condition: t3
+
+# ===== Parallelization ===== #
+
+
